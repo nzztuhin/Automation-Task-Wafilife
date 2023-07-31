@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Automation">
+    <test name="LoginTest">
+        <classes>
+            <class name="com.it.bd.tests.LoginTest">
+<!--                <methods><include name="loginTestwithInvalidcredential1"></include></methods>-->
+            </class>
+        </classes>
+    </test>
+    <test name="DashBoardTest">
+        <classes>
+            <class name="com.it.bd.tests.DashboardTest" />
+        </classes>
+    </test>
+</suite>
