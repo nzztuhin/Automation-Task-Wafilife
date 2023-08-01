@@ -39,6 +39,7 @@ public class LoginPage extends CommonMethods {
     })
     WebElement loginButton;
 
+
     public void login() throws InterruptedException, IOException {
         timeout();
 
@@ -53,11 +54,11 @@ public class LoginPage extends CommonMethods {
 
         try {
             if(userName.isDisplayed()) {
-                userName.sendKeys("Admin");
+                userName.sendKeys("skysssyyy");
                 timeout();
             }
         } catch (Exception e) {
-            test.fail("<p style=\"color:#FF5353; font-size:13px\"><b>Username is not locateable.Please check the error message.</b></p>");
+            test.fail("<p style=\"color:#FF5353; font-size:13px\"><b>Username is not locatable.Please check the error message.</b></p>");
             Throwable t = new InterruptedException("Exception");
             test.fail(t);
             @SuppressWarnings("unused")
@@ -70,11 +71,11 @@ public class LoginPage extends CommonMethods {
 
         try {
             if(password.isDisplayed()) {
-                password.sendKeys("admin123");
+                password.sendKeys("qwerty123");
                 timeout();
             }
         } catch (Exception e) {
-            test.fail("<p style=\"color:#FF5353; font-size:13px\"><b>Password is not locateable.Please check the error message.</b></p>");
+            test.fail("<p style=\"color:#FF5353; font-size:13px\"><b>Password is not locatable.Please check the error message.</b></p>");
             Throwable t = new InterruptedException("Exception");
             test.fail(t);
             @SuppressWarnings("unused")
@@ -89,18 +90,42 @@ public class LoginPage extends CommonMethods {
             if (loginButton.isDisplayed()) {
                 loginButton.click();
                 timeout(5000);
-                test.pass("<p style=\"color:#85BC63; font-size:13px\"><b>You have successfully logged in.</b></p>");
-                String screenShotPath = GetScreenShot.capture(PageDriver.getCurrentDriver(), "loginPass");
-                String dest = System.getProperty("user.dir") + "\\screenshots\\" + "loginPass.png";
-                test.pass(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
-            }
+                    test.pass("<p style=\"color:#85BC63; font-size:13px\"><b>You have successfully clicked log in.</b></p>");
+                    String screenShotPath = GetScreenShot.capture(PageDriver.getCurrentDriver(), "loginPass");
+                    String dest = System.getProperty("user.dir") + "\\screenshots\\" + "loginPass.png";
+                    test.pass(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
+           }
         } catch (Exception e) {
-            test.fail("<p style=\"color:#FF5353; font-size:13px\"><b>Login Button is not locateable.Please check the error message.</b></p>");
+            test.fail("<p style=\"color:#FF5353; font-size:13px\"><b>Login Button is not locatable.Please check the error message.</b></p>");
             Throwable t = new InterruptedException("Exception");
             test.fail(t);
             @SuppressWarnings("unused")
             String screenShotPath = GetScreenShot.capture(PageDriver.getCurrentDriver(), "loginButtonLocator");
             String dest = System.getProperty("user.dir") + "\\screenshots\\" + "loginButtonLocator.png";
+            test.fail(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
+            Assert.assertTrue(loginButton.isDisplayed());
+            PageDriver.getCurrentDriver().quit();
+        }
+
+    }
+    public void checkLogin() throws IOException {
+       String checkLoginSuccess = PageDriver.getCurrentDriver().getTitle();
+
+        String expectedText = "আমার অ্যাকাউন্ট - Wafilife";
+        try {
+            if(checkLoginSuccess.equals(expectedText)){
+            test.pass("<p style=\"color:#85BC63; font-size:13px\"><b>You have successfully logged in.</b></p>");
+            String screenShotPath = GetScreenShot.capture(PageDriver.getCurrentDriver(), "loginPassed");
+            String dest = System.getProperty("user.dir") + "\\screenshots\\" + "loginPassed.png";
+            test.pass(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
+            }
+        }catch (Exception e) {
+            test.fail("<p style=\"color:#FF5353; font-size:13px\"><b>Login Failed. Please check the error message.</b></p>");
+            Throwable t = new InterruptedException("Exception");
+            test.fail(t);
+            @SuppressWarnings("unused")
+            String screenShotPath = GetScreenShot.capture(PageDriver.getCurrentDriver(), "loginFailed");
+            String dest = System.getProperty("user.dir") + "\\screenshots\\" + "loginFailed.png";
             test.fail(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
             Assert.assertTrue(loginButton.isDisplayed());
             PageDriver.getCurrentDriver().quit();
