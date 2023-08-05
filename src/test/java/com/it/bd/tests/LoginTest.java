@@ -21,7 +21,7 @@ public class LoginTest extends BaseDriver {
         PageDriver.getCurrentDriver().manage().window().maximize();
         PageDriver.getCurrentDriver().get(url);
         report = ExtentFactory.getInstance();
-        parentTest = report.createTest("<p style=\"color:#FF6000; font-size:20px\"><b>ORANGE HRM</b></p>").assignAuthor("QA TEAM").assignDevice("Windows");
+        parentTest = report.createTest("<p style=\"color:#FF6000; font-size:20px\"><b>Login page test</b></p>").assignAuthor("QA TEAM").assignDevice("Windows");
     }
     @Test(priority = 0)
     public void loginButtonTest() throws InterruptedException, IOException {

@@ -29,7 +29,7 @@ public class AuthorPage extends CommonMethods {
     WebElement nextPage;
 
     @FindBys({
-            @FindBy(xpath = "//h3[normalize-space()='Md. Aktar Hossain']")
+            @FindBy(xpath = "//li[1]//a[2]//h3[1]")
     })
     WebElement selectAuthor;
 
@@ -39,7 +39,7 @@ public class AuthorPage extends CommonMethods {
             if(authors.isDisplayed()){
                 authors.click();
                 timeout();
-                test.pass("<p style=\"color:#85BC63; font-size:13px\"><b>You have successfully clicked log in.</b></p>");
+                test.pass("<p style=\"color:#85BC63; font-size:13px\"><b>You have successfully reached author page.</b></p>");
                 String screenShotPath = GetScreenShot.capture(PageDriver.getCurrentDriver(), "authorpage");
                 String dest = System.getProperty("user.dir") + "\\screenshots\\" + "authorpage.png";
                 test.pass(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
@@ -59,8 +59,8 @@ public class AuthorPage extends CommonMethods {
             if(nextPage.isDisplayed()){
                 nextPage.click();
                 timeout();
-                PageDriver.getCurrentDriver().navigate().back();
-                timeout();
+//                PageDriver.getCurrentDriver().navigate().back();
+//                timeout();
             }
         }catch (Exception e){
             System.out.println(e);
@@ -76,4 +76,6 @@ public class AuthorPage extends CommonMethods {
             System.out.println(e);
         }
     }
+
+
 }
