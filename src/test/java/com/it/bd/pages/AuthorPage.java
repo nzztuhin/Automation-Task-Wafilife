@@ -12,6 +12,8 @@ import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import java.io.IOException;
+
 public class AuthorPage extends CommonMethods {
     ExtentTest test;
     public AuthorPage(ExtentTest test){
@@ -48,19 +50,28 @@ public class AuthorPage extends CommonMethods {
             System.out.println(e);
         }
     }
-    public void scrollDown() throws InterruptedException {
+    public void scrollDown() throws InterruptedException, IOException {
         JavascriptExecutor js = (JavascriptExecutor) PageDriver.getCurrentDriver();
         //Scroll down
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)", "");
         timeout(5000);
+        test.pass("<p style=\"color:#85BC63; font-size:13px\"><b>You have successfully scrolled Down.</b></p>");
+        String screenShotPath = GetScreenShot.capture(PageDriver.getCurrentDriver(), "scrollDown");
+        String dest = System.getProperty("user.dir") + "\\screenshots\\" + "scrollDown.png";
+        test.pass(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
     }
     public void goToNextPage(){
         try {
             if(nextPage.isDisplayed()){
                 nextPage.click();
                 timeout();
-//                PageDriver.getCurrentDriver().navigate().back();
-//                timeout();
+
+                test.pass("<p style=\"color:#85BC63; font-size:13px\"><b>You have successfully reached next page.</b></p>");
+                String screenShotPath = GetScreenShot.capture(PageDriver.getCurrentDriver(), "nextPage");
+                String dest = System.getProperty("user.dir") + "\\screenshots\\" + "nextPage.png";
+                test.pass(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
+                authors.click();
+                timeout();
             }
         }catch (Exception e){
             System.out.println(e);
@@ -71,6 +82,10 @@ public class AuthorPage extends CommonMethods {
             if(selectAuthor.isDisplayed()){
                 selectAuthor.click();
                 timeout();
+                test.pass("<p style=\"color:#85BC63; font-size:13px\"><b>You have successfully selected An Author.</b></p>");
+                String screenShotPath = GetScreenShot.capture(PageDriver.getCurrentDriver(), "selectedAnAuthor");
+                String dest = System.getProperty("user.dir") + "\\screenshots\\" + "selectedAnAuthor.png";
+                test.pass(MediaEntityBuilder.createScreenCaptureFromPath(dest).build());
             }
         }catch (Exception e){
             System.out.println(e);

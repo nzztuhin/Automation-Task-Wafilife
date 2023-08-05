@@ -10,6 +10,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 public class BookDetailsTest extends BaseDriver {
     ExtentReports report;
     ExtentTest parentTest;
@@ -19,15 +21,28 @@ public class BookDetailsTest extends BaseDriver {
         PageDriver.getCurrentDriver().manage().window().maximize();
         PageDriver.getCurrentDriver().get(url);
         report = ExtentFactory.getInstance();
-        parentTest = report.createTest("<p style=\"color:#FF6000; font-size:20px\"><b>book details page test</b></p>").assignAuthor("QA TEAM").assignDevice("Windows");
+        parentTest = report.createTest("<p style=\"color:#FF6000; font-size:20px\"><b>Book details and place order test</b></p>").assignAuthor("QA TEAM").assignDevice("Windows");
     }
     @Test(priority = 0)
-    public void bookTest()throws InterruptedException {
+    public void bookTest() throws InterruptedException, IOException {
         childTest = parentTest.createNode("<p style=\"color:#3E96E7; font-size:20px\"><b>Book Details Page test</b></p>");
         BookDetailsPage bookDetailsPage = new BookDetailsPage(childTest);
         bookDetailsPage.selectBookDetails();
+
+    }
+    @Test(priority = 1)
+    public void orderTest() throws IOException {
+        childTest = parentTest.createNode("<p style=\"color:#3E96E7; font-size:20px\"><b>Click on Order</b></p>");
+        BookDetailsPage bookDetailsPage = new BookDetailsPage(childTest);
         bookDetailsPage.clickOrder();
+
+    }
+    @Test(priority = 2)
+    public void checkoutOrderTest() throws IOException {
+        childTest = parentTest.createNode("<p style=\"color:#3E96E7; font-size:20px\"><b>Click on checkout</b></p>");
+        BookDetailsPage bookDetailsPage = new BookDetailsPage(childTest);
         bookDetailsPage.clickCheckout();
+
     }
     @AfterClass
     public void afterClass() {
