@@ -7,6 +7,7 @@ import com.it.bd.drivers.PageDriver;
 import com.it.bd.pages.LoginPage;
 import com.it.bd.pages.LogoutPage;
 import com.it.bd.utilities.ExtentFactory;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -28,5 +29,9 @@ public class LogoutTest extends BaseDriver {
         childTest = parentTest.createNode("<p style=\"color:#3E96E7; font-size:20px\"><b>LOGOUT TEST</b></p>");
         LogoutPage logoutPage = new LogoutPage(childTest);
         logoutPage.logout();
+    }
+    @AfterClass
+    public void afterClass() {
+        report.flush();
     }
 }
