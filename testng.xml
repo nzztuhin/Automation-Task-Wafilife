@@ -7,6 +7,7 @@
             <class name="com.it.bd.tests.AuthorTest"/>
             <class name="com.it.bd.tests.BookDetailsTest"/>
             <class name="com.it.bd.tests.CompleteOrderTest"/>
+            <class name="com.it.bd.tests.LogoutTest"/>
         </classes>
     </test>
 </suite>
