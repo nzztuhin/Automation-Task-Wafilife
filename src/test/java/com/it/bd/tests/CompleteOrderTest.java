@@ -18,7 +18,7 @@ public class CompleteOrderTest extends BaseDriver {
     @BeforeTest
     public void openUrl() {
         PageDriver.getCurrentDriver().manage().window().maximize();
-        PageDriver.getCurrentDriver().get(url);
+        PageDriver.getCurrentDriver();
         report = ExtentFactory.getInstance();
         parentTest = report.createTest("<p style=\"color:#FF6000; font-size:20px\"><b>Complete Order Page</b></p>").assignAuthor("QA TEAM").assignDevice("Windows");
     }

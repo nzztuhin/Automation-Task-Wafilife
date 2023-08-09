@@ -44,7 +44,7 @@ public class LogoutPage extends CommonMethods {
         try {
             if (logout.isDisplayed()){
                 logout.click();
-                timeout(5000);
+                timeout();
                 test.pass("<p style=\"color:#85BC63; font-size:13px\"><b>You have successfully logged out.</b></p>");
                 String screenShotPath = GetScreenShot.capture(PageDriver.getCurrentDriver(), "logoutPass");
                 String dest = System.getProperty("user.dir") + "\\screenshots\\" + "logoutPass.png";
